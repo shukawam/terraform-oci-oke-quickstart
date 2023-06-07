@@ -1,0 +1,28 @@
+package test
+
+import (
+	"testing"
+
+	"github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/stretchr/testify/assert"
+)
+
+func TestVcn(t *testing.T) {
+	t.Parallel()
+
+	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+		TerraformDir: "../examples/vcn",
+		VarFiles: []string{
+			"variables.tfvars",
+		},
+		NoColor: false,
+	})
+
+	defer terraform.Destroy(t, terraformOptions)
+
+	terraform.InitAndApply(t, terraformOptions)
+
+	actualVcnName := terraform.Output(t, terraformOptions, "vcn_display_name")
+
+	assert.Equal(t, "example-vcn", actualVcnName)
+}
