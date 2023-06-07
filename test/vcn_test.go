@@ -16,9 +16,9 @@ func TestVcn(t *testing.T) {
 			"region":           "uk-london-1",
 			"vcn_display_name": "example-vcn",
 		},
-		VarFiles: []string{
-			"variables.tfvars",
-		},
+		// VarFiles: []string{
+		// 	"variables.tfvars",
+		// },
 		NoColor: false,
 	})
 
