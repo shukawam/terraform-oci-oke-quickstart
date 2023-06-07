@@ -12,6 +12,10 @@ func TestVcn(t *testing.T) {
 
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 		TerraformDir: "../examples/vcn",
+		Vars: map[string]interface{}{
+			"region":           "uk-london-1",
+			"vcn_display_name": "example-vcn",
+		},
 		VarFiles: []string{
 			"variables.tfvars",
 		},
