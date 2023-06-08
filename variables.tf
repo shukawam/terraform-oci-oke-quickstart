@@ -44,12 +44,15 @@ variable "cluster_name" {
 
 variable "node_pool_instance_number" {
   description = "Node pool instance number"
+  type        = number
 }
 
 variable "node_pool_node_shape_config_ocpus" {
   description = "Node OCPUs"
+  type        = number
 }
 
 variable "node_pool_node_shape_config_memory_in_gbs" {
   description = "Node memory"
+  type        = number
 }

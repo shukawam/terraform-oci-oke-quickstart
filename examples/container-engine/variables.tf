@@ -54,12 +54,15 @@ variable "node_pool_subnet_id" {
 
 variable "node_pool_instance_number" {
   description = "Node Pool Instance Number"
+  type        = number
 }
 
 variable "node_pool_node_shape_config_memory_in_gbs" {
   description = "Instance Memory(GB)"
+  type        = number
 }
 
 variable "node_pool_node_shape_config_ocpus" {
   description = "Instance OCPUs"
+  type        = number
 }
