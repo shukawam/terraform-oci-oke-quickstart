@@ -28,9 +28,9 @@ resource "oci_containerengine_node_pool" "node_pool_free" {
   compartment_id     = var.compartment_ocid
   kubernetes_version = local.kubernetes_version
   name               = local.node_pool_name
-  node_shape         = local.node_pool_node_shape
+  node_shape         = local.node_pool_node_shape_arm
   node_source_details {
-    image_id                = local.node_source_image_id
+    image_id                = local.node_source_image_id_arm
     source_type             = local.node_source_type
     boot_volume_size_in_gbs = local.node_source_boot_volume_size
   }
