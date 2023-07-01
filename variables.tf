@@ -56,3 +56,9 @@ variable "node_pool_node_shape_config_memory_in_gbs" {
   description = "Node memory"
   type        = number
 }
+
+variable "is_free" {
+  default     = true
+  type        = bool
+  description = "Option for free(true: free, false: paid)"
+}

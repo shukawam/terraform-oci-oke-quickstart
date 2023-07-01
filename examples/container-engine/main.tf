@@ -18,4 +18,5 @@ module "shukawam_containerengine_cluster" {
   node_pool_instance_number                 = var.node_pool_instance_number
   node_pool_node_shape_config_memory_in_gbs = var.node_pool_node_shape_config_memory_in_gbs
   node_pool_node_shape_config_ocpus         = var.node_pool_node_shape_config_ocpus
+  is_free                                   = var.is_free
 }

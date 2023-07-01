@@ -7,7 +7,9 @@ locals {
   cluster_options_add_ons_is_tiller_enabled               = "false"
   node_pool_name                                          = "pool1"
   node_pool_node_shape                                    = data.oci_core_shapes.node_shapes.shapes.0.name
+  node_pool_node_shape_arm                                = data.oci_core_shapes.node_shapes_arm.shapes.0.name
   node_source_image_id                                    = data.oci_core_images.node_images.images.0.id
+  node_source_image_id_arm                                = data.oci_core_images.node_images_arm.images.0.id
   node_source_type                                        = "IMAGE"
   node_source_boot_volume_size                            = "50"
   ad_number                                               = "1"

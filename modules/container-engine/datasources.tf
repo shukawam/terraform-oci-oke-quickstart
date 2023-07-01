@@ -12,11 +12,29 @@ data "oci_core_shapes" "node_shapes" {
   }
 }
 
+data "oci_core_shapes" "node_shapes_arm" {
+  compartment_id = var.compartment_ocid
+  filter {
+    name   = "name"
+    values = ["VM.Standard.A1.Flex"]
+    regex  = true
+  }
+}
+
 data "oci_core_images" "node_images" {
   compartment_id = var.compartment_ocid
   filter {
     name   = "display_name"
     values = ["Oracle-Linux-7\\.9-20.*"]
+    regex  = true
+  }
+}
+
+data "oci_core_images" "node_images_arm" {
+  compartment_id = var.compartment_ocid
+  filter {
+    name   = "display_name"
+    values = ["Oracle-Linux-7.9-aarch64-20.*"]
     regex  = true
   }
 }

@@ -63,3 +63,9 @@ variable "node_pool_node_shape_config_memory_in_gbs" {
 variable "node_pool_node_shape_config_ocpus" {
   description = "Instance OCPUs"
 }
+
+variable "is_free" {
+  default     = false
+  type        = bool
+  description = "Option for free(true: free, false: paid)"
+}

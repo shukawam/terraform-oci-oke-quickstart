@@ -31,12 +31,13 @@ module "shukawam_containerengine_cluster" {
   node_pool_instance_number                 = var.node_pool_instance_number
   node_pool_node_shape_config_memory_in_gbs = var.node_pool_node_shape_config_memory_in_gbs
   node_pool_node_shape_config_ocpus         = var.node_pool_node_shape_config_ocpus
+  is_free                                   = var.is_free
 }
 
 #####
 # Kube Config
 module "shukawam_kube_config" {
-  source = "../../modules/kube-config"
+  source = "./modules/kube-config"
 
   region           = var.region
   tenancy_ocid     = var.tenancy_ocid

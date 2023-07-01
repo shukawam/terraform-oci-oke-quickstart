@@ -22,7 +22,8 @@ resource "oci_containerengine_cluster" "containerengine_cluster" {
   }
 }
 
-resource "oci_containerengine_node_pool" "node_pool" {
+resource "oci_containerengine_node_pool" "node_pool_free" {
+  count              = var.is_free == true ? 1 : 0
   cluster_id         = oci_containerengine_cluster.containerengine_cluster.id
   compartment_id     = var.compartment_ocid
   kubernetes_version = local.kubernetes_version
@@ -45,3 +46,29 @@ resource "oci_containerengine_node_pool" "node_pool" {
     ocpus         = var.node_pool_node_shape_config_ocpus
   }
 }
+
+resource "oci_containerengine_node_pool" "node_pool_paid" {
+  count              = var.is_free == false ? 1 : 0
+  cluster_id         = oci_containerengine_cluster.containerengine_cluster.id
+  compartment_id     = var.compartment_ocid
+  kubernetes_version = local.kubernetes_version
+  name               = local.node_pool_name
+  node_shape         = local.node_pool_node_shape
+  node_source_details {
+    image_id                = local.node_source_image_id
+    source_type             = local.node_source_type
+    boot_volume_size_in_gbs = local.node_source_boot_volume_size
+  }
+  node_config_details {
+    placement_configs {
+      availability_domain = data.oci_identity_availability_domain.ad.name
+      subnet_id           = var.node_pool_subnet_id
+    }
+    size = var.node_pool_instance_number
+  }
+  node_shape_config {
+    memory_in_gbs = var.node_pool_node_shape_config_memory_in_gbs
+    ocpus         = var.node_pool_node_shape_config_ocpus
+  }
+}
+
